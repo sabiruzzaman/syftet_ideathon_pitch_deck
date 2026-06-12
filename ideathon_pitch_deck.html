@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="bn" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ideathon Pitch Deck | Modern Presentation</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Poppins & Hind Siliguri for modern Bangla/English typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Poppins', 'Hind Siliguri', 'sans-serif'],
+                    },
+                    colors: {
+                        agro: { 400: '#34D399', 500: '#10B981', 600: '#059669' },
+                        trace: { 400: '#60A5FA', 500: '#3B82F6', 600: '#2563EB' },
+                        city: { 400: '#FBBF24', 500: '#F59E0B', 600: '#D97706' }, // Amber for Smart City
+                        health: { 400: '#F87171', 500: '#EF4444', 600: '#DC2626' }, // Red/Rose for Health
+                        dark: { 800: '#1E293B', 900: '#0F172A' }
+                    },
+                    animation: {
+                        'float': 'float 3s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'fill-bar': 'fillBar 1.5s ease-out forwards',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-5px)' },
+                        },
+                        fillBar: {
+                            '0%': { width: '0%' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body {
+            /* Polished Background with subtle grid */
+            background-color: #0F172A;
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(30, 41, 59, 1) 0px, transparent 50%),
+                radial-gradient(at 100% 0%, rgba(15, 23, 42, 1) 0px, transparent 50%),
+                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 100% 100%, 100% 100%, 30px 30px, 30px 30px;
+            color: #F8FAFC;
+            min-height: 100vh;
+        }
+        
+        /* Advanced Glassmorphism utility */
+        .glass {
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.6) 0%, rgba(15, 23, 42, 0.8) 100%);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Smooth fade-in animation with slight scale */
+        .fade-in {
+            animation: fadeInScale 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        @keyframes fadeInScale {
+            from { opacity: 0; transform: translateY(20px) scale(0.98); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: rgba(15, 23, 42, 0.8); }
+        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 10px; border: 2px solid #0F172A; }
+        ::-webkit-scrollbar-thumb:hover { background: #475569; }
+
+        .hidden-content { display: none; }
+        
+        /* Highlight text selection */
+        ::selection { background: rgba(99, 102, 241, 0.3); color: white; }
+    </style>
+</head>
+<body class="antialiased overflow-x-hidden relative">
+
+    <!-- Global Glowing Orbs Background -->
+    <div class="fixed top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-indigo-600/10 blur-[120px] pointer-events-none -z-10 animate-pulse-slow"></div>
+    <div class="fixed bottom-[-10%] right-[-10%] w-[40%] h-[40%] rounded-full bg-emerald-600/10 blur-[120px] pointer-events-none -z-10 animate-pulse-slow" style="animation-delay: 2s;"></div>
+
+    <!-- Floating Header -->
+    <header class="fixed top-0 w-full z-50 glass border-b border-white/5 shadow-2xl transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex flex-col xl:flex-row justify-between items-center gap-4 xl:gap-0">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-500 to-purple-600 flex items-center justify-center shadow-lg shadow-indigo-500/30 shrink-0 animate-float border border-white/10">
+                    <i class="fa-solid fa-lightbulb text-white text-xl"></i>
+                </div>
+                <div class="text-center md:text-left hidden sm:block">
+                    <h1 class="text-lg font-bold tracking-wider text-slate-100">IDEATHON <span class="text-indigo-400">2026</span></h1>
+                    <p class="text-[10px] text-indigo-200/60 font-medium uppercase tracking-widest">Digital Pitch Deck</p>
+                </div>
+            </div>
+            
+            <!-- Idea Switcher Buttons - Now with 4 options -->
+            <div class="flex flex-wrap justify-center p-1.5 rounded-xl glass border border-slate-700/50 w-full xl:w-auto shadow-inner gap-1 sm:gap-2 overflow-x-auto">
+                <button onclick="showIdea('agro')" id="btn-agro" aria-selected="true" class="nav-btn flex-none px-3 sm:px-4 py-2 rounded-lg text-xs md:text-sm font-semibold transition-all duration-500 bg-gradient-to-r from-agro-500 to-agro-600 text-white shadow-lg shadow-agro-500/40 transform scale-100">
+                    <i class="fa-solid fa-leaf mr-1 sm:mr-1.5 opacity-90"></i> AgroAI
+                </button>
+                <button onclick="showIdea('trace')" id="btn-trace" aria-selected="false" class="nav-btn flex-none px-3 sm:px-4 py-2 rounded-lg text-xs md:text-sm font-semibold transition-all duration-500 hover:bg-slate-800 text-slate-400 bg-transparent transform scale-95 hover:scale-100">
+                    <i class="fa-solid fa-truck-fast mr-1 sm:mr-1.5 opacity-70"></i> FreshTrace
+                </button>
+                <button onclick="showIdea('city')" id="btn-city" aria-selected="false" class="nav-btn flex-none px-3 sm:px-4 py-2 rounded-lg text-xs md:text-sm font-semibold transition-all duration-500 hover:bg-slate-800 text-slate-400 bg-transparent transform scale-95 hover:scale-100">
+                    <i class="fa-solid fa-city mr-1 sm:mr-1.5 opacity-70"></i> SmartCity
+                </button>
+                <button onclick="showIdea('health')" id="btn-health" aria-selected="false" class="nav-btn flex-none px-3 sm:px-4 py-2 rounded-lg text-xs md:text-sm font-semibold transition-all duration-500 hover:bg-slate-800 text-slate-400 bg-transparent transform scale-95 hover:scale-100">
+                    <i class="fa-solid fa-heart-pulse mr-1 sm:mr-1.5 opacity-70"></i> EHR Cloud
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-40 sm:pt-36 md:pt-32 pb-24 relative z-10">
+        
+        <!-- ============================================== -->
+        <!-- IDEA 1: AgroAI Content -->
+        <!-- ============================================== -->
+        <div id="content-agro" class="fade-in block">
+            <!-- Hero Section -->
+            <div class="text-center mb-12 md:mb-20 relative">
+                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-32 bg-agro-500/10 blur-[80px] rounded-full pointer-events-none"></div>
+                <span class="inline-flex items-center gap-2 py-1.5 px-4 rounded-full bg-agro-500/10 text-agro-400 border border-agro-500/30 text-xs md:text-sm font-semibold tracking-widest mb-6 uppercase shadow-[0_0_15px_rgba(16,185,129,0.15)]">
+                    <span class="w-1.5 h-1.5 rounded-full bg-agro-400 animate-pulse"></span> আইডিয়া ১
+                </span>
+                <h2 class="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 leading-[1.1] tracking-tight text-white drop-shadow-sm">
+                    AgroAI <br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-agro-400 via-emerald-300 to-teal-200">এআই-ভিত্তিক শস্যের রোগ নির্ণয়</span>
+                </h2>
+                <p class="text-slate-300/80 max-w-2xl mx-auto text-sm md:text-lg px-2 font-light leading-relaxed">কম্পিউটার ভিশন প্রযুক্তি ব্যবহার করে মিলি-সেকেন্ডে ফসলের নিখুঁত রোগ নির্ণয় এবং রিয়েল-টাইম স্মার্ট প্রিসক্রিপশন প্ল্যাটফর্ম।</p>
+            </div>
+
+            <!-- Grid Layout for Pitch Elements -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-10 md:mb-16">
+                
+                <!-- Problem Statement -->
+                <div class="glass p-6 md:p-8 rounded-3xl border-slate-700/50 hover:border-red-500/30 transition-all duration-500 group hover:-translate-y-1 hover:shadow-2xl hover:shadow-red-900/10">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-12 h-12 shrink-0 rounded-2xl bg-gradient-to-br from-red-500/20 to-red-600/5 border border-red-500/20 flex items-center justify-center text-red-400 text-xl group-hover:scale-110 transition-transform duration-300">
+                            <i class="fa-solid fa-triangle-exclamation"></i>
+                        </div>
+                        <h3 class="text-xl md:text-2xl font-bold text-slate-100">The Problem <span class="text-slate-500 text-lg font-medium">(সমস্যা)</span></h3>
+                    </div>
+                    <ul class="space-y-4 text-sm md:text-base text-slate-300 leading-relaxed">
+                        <li class="flex items-start gap-3"><i class="fa-solid fa-xmark text-red-400 mt-1.5 shrink-0 opacity-80"></i> <span><strong>ভুল ডায়াগনসিস:</strong> কৃষকরা রোগ বুঝতে না পেরে স্থানীয় ডিলারের কথায় ভুল বা অতিরিক্ত ক্ষতিকর কীটনাশক ব্যবহার করেন।</span></li>
+                        <li class="flex items-start gap-3"><i class="fa-solid fa-xmark text-red-400 mt-1.5 shrink-0 opacity-80"></i> <span><strong>আর্থিক ক্ষতি:</strong> ভুল ওষুধের কারণে ফসলের ব্যাপক ক্ষতি হয় এবং উৎপাদন খরচ প্রায় ৩০-৪০% বৃদ্ধি পায়।</span></li>
+                        <li class="flex items-start gap-3"><i class="fa-solid fa-xmark text-red-400 mt-1.5 shrink-0 opacity-80"></i> <span><strong>বিশেষজ্ঞের অভাব:</strong> প্রত্যন্ত অঞ্চলে বিশেষজ্ঞ পৌঁছানো কঠিন, প্রতি ১০০০ কৃষকের বিপরীতে বিশেষজ্ঞ মাত্র ১ জন।</span></li>
+                    </ul>
+                </div>
+
+                <!-- Solution -->
+                <div class="glass p-6 md:p-8 rounded-3xl border-agro-500/30 hover:border-agro-400 transition-all duration-500 relative overflow-hidden group hover:-translate-y-1 hover:shadow-2xl hover:shadow-agro-900/20">
+                    <div class="absolute -right-20 -top-20 w-48 h-48 bg-agro-500/10 rounded-full blur-3xl group-hover:bg-agro-500/20 transition-all duration-700"></div>
+                    <div class="flex items-center gap-4 mb-6 relative z-10">
+                        <div class="w-12 h-12 shrink-0 rounded-2xl bg-gradient-to-br from-agro-500/20 to-agro-600/5 border border-agro-500/30 flex items-center justify-center text-agro-400 text-xl group-hover:scale-110 transition-transform duration-300 shadow-[0_0_15px_rgba(16,185,129,0.2)]">
+                            <i class="fa-solid fa-check-double"></i>
+                        </div>
+                        <h3 class="text-xl md:text-2xl font-bold text-slate-100">The Solution <span class="text-slate-500 text-lg font-medium">(সমাধান)</span></h3>
+                    </div>
+                    <ul class="space-y-4 text-sm md:text-base text-slate-300 leading-relaxed relative z-10">
+                        <li class="flex items-start gap-3"><i class="fa-solid fa-camera text-agro-400 mt-1.5 shrink-0 group-hover:text-agro-300 transition-colors"></i> <span><strong>স্মার্ট স্ক্যান:</strong> অফলাইন সাপোর্টেড অ্যাপ দিয়ে আক্রান্ত পাতার একটি ছবি তোলা মাত্রই স্বয়ংক্রিয় রোগ শনাক্তকরণ।</span></li>
+                        <li class="flex items-start gap-3"><i class="fa-solid fa-microchip text-agro-400 mt-1.5 shrink-0 group-hover:text-agro-300 transition-colors"></i> <span><strong>এআই প্রেডিকশন:</strong> ৯৫%+ একুরেসি সহ এআই (CNN) মডেল দ্বারা তাৎক্ষণিক রোগের নাম ও কারণ বিশ্লেষণ।</span></li>
+                        <li class="flex items-start gap-3"><i class="fa-solid fa-prescription-bottle-medical text-agro-400 mt-1.5 shrink-0 group-hover:text-agro-300 transition-colors"></i> <span><strong>ডিজিটাল প্রিসক্রিপশন:</strong> ভয়েস সাপোর্ট সহ সম্পূর্ণ বাংলায় সঠিক ওষুধ, মাত্রা এবং ব্যবহারের নিয়মাবলি প্রদান।</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- User Flow Section -->
+            <div class="mb-10 md:mb-16">
+                <h3 class="text-xl font-bold mb-6 flex items-center gap-3 text-slate-100"><i class="fa-solid fa-mobile-screen text-indigo-400"></i> ইউজার ফ্লো <span class="text-slate-500 text-base font-normal">(User Flow)</span></h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 relative">
+                    <!-- Flow Items -->
+                    <div class="glass p-6 rounded-2xl border border-slate-700/50 text-center relative group hover:border-indigo-500/30 hover:bg-slate-800/30 transition-all duration-300">
+                        <div class="w-12 h-12 mx-auto bg-slate-900 rounded-full flex items-center justify-center mb-4 text-agro-400 border border-slate-700 shadow-inner group-hover:scale-110 group-hover:border-agro-500/50 transition-all duration-300 font-bold text-lg">1</div>
+                        <h4 class="font-bold text-slate-200 mb-2">ছবি তুলুন</h4>
+                        <p class="text-xs text-slate-400 leading-relaxed">অ্যাপ ওপেন করে আক্রান্ত পাতার একটি ক্লিয়ার ছবি তুলবেন।</p>
+                        <i class="fa-solid fa-chevron-right absolute top-1/2 -right-4 transform -translate-y-1/2 text-slate-600 hidden lg:block text-lg"></i>
+                        <div class="absolute -bottom-4 left-1/2 transform -translate-x-1/2 text-slate-600 block lg:hidden"><i class="fa-solid fa-chevron-down"></i></div>
+                    </div>
+                    <div class="glass p-6 rounded-2xl border border-slate-700/50 text-center relative group hover:border-indigo-500/30 hover:bg-slate-800/30 transition-all duration-300">
+                        <div class="w-12 h-12 mx-auto bg-slate-900 rounded-full flex items-center justify-center mb-4 text-agro-400 border border-slate-700 shadow-inner group-hover:scale-110 group-hover:border-agro-500/50 transition-all duration-300 font-bold text-lg">2</div>
+                        <h4 class="font-bold text-slate-200 mb-2">AI বিশ্লেষণ</h4>
+                        <p class="text-xs text-slate-400 leading-relaxed">অফলাইন এআই মডেল মিলি-সেকেন্ডে রোগটি শনাক্ত করবে।</p>
+                        <i class="fa-solid fa-chevron-right absolute top-1/2 -right-4 transform -translate-y-1/2 text-slate-600 hidden lg:block text-lg"></i>
+                        <div class="absolute -bottom-4 left-1/2 transform -translate-x-1/2 text-slate-600 block lg:hidden md:hidden"><i class="fa-solid fa-chevron-down"></i></div>
+                    </div>
+                    <div class="glass p-6 rounded-2xl border border-slate-700/50 text-center relative group hover:border-indigo-500/30 hover:bg-slate-800/30 transition-all duration-300">
+                        <div class="w-12 h-12 mx-auto bg-slate-900 rounded-full flex items-center justify-center mb-4 text-agro-400 border border-slate-700 shadow-inner group-hover:scale-110 group-hover:border-agro-500/50 transition-all duration-300 font-bold text-lg">3</div>
+                        <h4 class="font-bold text-slate-200 mb-2">প্রিসক্রিপশন</h4>
+                        <p class="text-xs text-slate-400 leading-relaxed">সঠিক ওষুধের নাম ও মাত্রা বাংলায় স্ক্রিনে চলে আসবে।</p>
+                        <i class="fa-solid fa-chevron-right absolute top-1/2 -right-4 transform -translate-y-1/2 text-slate-600 hidden lg:block text-lg"></i>
+                        <div class="absolute -bottom-4 left-1/2 transform -translate-x-1/2 text-slate-600 block lg:hidden"><i class="fa-solid fa-chevron-down"></i></div>
+                    </div>
+                    <div class="glass p-6 rounded-2xl border border-slate-700/50 text-center group hover:border-indigo-500/30 hover:bg-slate-800/30 transition-all duration-300">
+                        <div class="w-12 h-12 mx-auto bg-slate-900 rounded-full flex items-center justify-center mb-4 text-agro-400 border border-slate-700 shadow-inner group-hover:scale-110 group-hover:border-agro-500/50 transition-all duration-300 font-bold text-lg">4</div>
+                        <h4 class="font-bold text-slate-200 mb-2">অ্যাকশন</h4>
+                        <p class="text-xs text-slate-400 leading-relaxed">কৃষক ওষুধ কিনবেন অথবা সরাসরি বিশেষজ্ঞের সাথে কল করবেন।</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-10 md:mb-16">
+                <!-- Tech Stack -->
+                <div class="glass p-6 md:p-8 rounded-3xl col-span-1 lg:col-span-2 border-slate-700/50 hover:border-indigo-500/30 transition-colors">
+                    <h3 class="text-lg md:text-xl font-bold mb-6 flex items-center gap-3"><i class="fa-solid fa-laptop-code text-indigo-400"></i> Tech Stack</h3>
+                    <div class="flex flex-wrap gap-3 md:gap-4">
+                        <span class="px-4 py-2.5 rounded-xl bg-slate-900/80 border border-slate-700/80 text-sm font-medium flex items-center gap-2.5 hover:border-sky-400/50 hover:bg-sky-400/5 transition-all cursor-default shadow-sm"><i class="fa-brands fa-flutter text-sky-400 text-lg"></i> Flutter App</span>
+                        <span class="px-4 py-2.5 rounded-xl bg-slate-900/80 border border-slate-700/80 text-sm font-medium flex items-center gap-2.5 hover:border-pink-400/50 hover:bg-pink-400/5 transition-all cursor-default shadow-sm"><i class="fa-solid fa-brain text-pink-400 text-lg"></i> CNN / ResNet (AI)</span>
+                        <span class="px-4 py-2.5 rounded-xl bg-slate-900/80 border border-slate-700/80 text-sm font-medium flex items-center gap-2.5 hover:border-yellow-400/50 hover:bg-yellow-400/5 transition-all cursor-default shadow-sm"><i class="fa-brands fa-python text-yellow-400 text-lg"></i> Python FastAPI</span>
+                        <span class="px-4 py-2.5 rounded-xl bg-slate-900/80 border border-slate-700/80 text-sm font-medium flex items-center gap-2.5 hover:border-emerald-400/50 hover:bg-emerald-400/5 transition-all cursor-default shadow-sm"><i class="fa-solid fa-database text-emerald-400 text-lg"></i> SQLite (Offline)</span>
+                    </div>
+                </div>
+
+                <!-- Business Model -->
+                <div class="glass p-6 md:p-8 rounded-3xl bg-gradient-to-br from-slate-800/60 to-agro-900/30 border border-agro-500/20 hover:border-agro-500/40 transition-colors relative overflow-hidden">
+                    <div class="absolute -right-10 -bottom-10 opacity-10"><i class="fa-solid fa-chart-pie text-9xl text-agro-500"></i></div>
+                    <h3 class="text-lg md:text-xl font-bold mb-6 flex items-center gap-3 relative z-10"><i class="fa-solid fa-comments-dollar text-agro-400"></i> Business Model</h3>
+                    <ul class="space-y-3 text-sm text-slate-300 relative z-10 font-medium">
+                        <li class="p-3 bg-slate-900/60 rounded-xl border border-slate-700/50 flex justify-between items-center hover:border-agro-500/30 transition-colors"><span>কৃষকদের জন্য অ্যাপ</span> <span class="px-2 py-0.5 rounded bg-agro-500/20 text-agro-400 text-xs font-bold border border-agro-500/30">FREE</span></li>
+                        <li class="p-3 bg-slate-900/60 rounded-xl border border-slate-700/50 flex justify-between items-center hover:border-yellow-500/30 transition-colors"><span>B2B প্রোমোশন</span> <span class="px-2 py-0.5 rounded bg-yellow-500/20 text-yellow-400 text-xs font-bold border border-yellow-500/30">PAID</span></li>
+                        <li class="p-3 bg-slate-900/60 rounded-xl border border-slate-700/50 flex justify-between items-center hover:border-indigo-500/30 transition-colors"><span>ডেটা লাইসেন্সিং</span> <span class="px-2 py-0.5 rounded bg-indigo-500/20 text-indigo-400 text-xs font-bold border border-indigo-500/30">SUB</span></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <!-- Market Size -->
+                <div class="glass p-6 md:p-8 rounded-3xl border border-slate-700/50 hover:bg-slate-800/30 transition-colors group">
+                    <h3 class="text-lg md:text-xl font-bold mb-4 flex items-center gap-3"><i class="fa-solid fa-earth-asia text-blue-400 group-hover:animate-spin-slow"></i> Market Potential</h3>
+                    <div class="flex items-end gap-4 mb-5">
+                        <div class="text-4xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-300 tracking-tight">16M+</div>
+                        <div class="text-xs md:text-sm text-slate-400 leading-tight pb-1">কৃষক পরিবার <br>বাংলাদেশে</div>
+                    </div>
+                    <div class="w-full bg-slate-900/80 rounded-full h-2.5 mb-2 shadow-inner overflow-hidden border border-slate-700/50">
+                        <div class="bg-gradient-to-r from-blue-500 to-indigo-400 h-full rounded-full animate-fill-bar relative" style="width: 75%">
+                            <div class="absolute inset-0 bg-white/20 w-full animate-pulse"></div>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-center text-[10px] md:text-xs font-medium text-slate-500 uppercase tracking-wider">
+                        <span>Current Focus</span>
+                        <span>TAM: 100%</span>
+                    </div>
+                </div>
+
+                <!-- Go-To-Market Strategy -->
+                <div class="glass p-6 md:p-8 rounded-3xl border border-slate-700/50 hover:bg-slate-800/30 transition-colors">
+                    <h3 class="text-lg md:text-xl font-bold mb-5 flex items-center gap-3"><i class="fa-solid fa-rocket text-red-400"></i> GTM Strategy</h3>
+                    <ul class="space-y-4 text-sm text-slate-300">
+                        <li class="flex items-start gap-3 group"><i class="fa-regular fa-circle-dot text-slate-600 mt-1 shrink-0 group-hover:text-red-400 transition-colors"></i> <span><strong>Phase 1:</strong> এনজিও (NGO) ও স্থানীয় কৃষি কর্মকর্তাদের মাধ্যমে পাইলট লঞ্চ।</span></li>
+                        <li class="flex items-start gap-3 group"><i class="fa-regular fa-circle-dot text-slate-600 mt-1 shrink-0 group-hover:text-red-400 transition-colors"></i> <span><strong>Phase 2:</strong> ইউনিয়ন তথ্য সেবাকেন্দ্র এবং গ্রাম্য ডিলারদের ট্রেনিং।</span></li>
+                        <li class="flex items-start gap-3 group"><i class="fa-regular fa-circle-dot text-slate-600 mt-1 shrink-0 group-hover:text-red-400 transition-colors"></i> <span><strong>Phase 3:</strong> শীর্ষ এগ্রো-কোম্পানিগুলোর সাথে রেভিনিউ শেয়ারিং পার্টনারশিপ।</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============================================== -->
+        <!-- IDEA 2: FreshTrace Content -->
+        <!-- ============================================== -->
+        <div id="content-trace" class="hidden-content">
+            <!-- Hero Section -->
+            <div class="text-center mb-12 md:mb-20 relative">
+                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-32 bg-trace-500/10 blur-[80px] rounded-full pointer-events-none"></div>
+                <span class="inline-flex items-center gap-2 py-1.5 px-4 rounded-full bg-trace-500/10 text-trace-400 border border-trace-500/30 text-xs md:text-sm font-semibold tracking-widest mb-6 uppercase shadow-[0_0_15px_rgba(59,130,246,0.15)]">
+                    <span class="w-1.5 h-1.5 rounded-full bg-trace-400 animate-pulse"></span> আইডিয়া ২
+                </span>
+                <h2 class="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 leading-[1.1] tracking-tight text-white drop-shadow-sm">
+                    FreshTrace <br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-trace-400 via-sky-300 to-cyan-200">রিয়েল-টাইম এগ্রি লজিস্টিকস</span>
+                </h2>
+                <p class="text-slate-300/80 max-w-2xl mx-auto text-sm md:text-lg px-2 font-light leading-relaxed">উবার বা পাঠাওয়ের মতো অত্যন্ত দ্রুতগতির এবং রিয়েল-টাইম লাইভ ট্র্যাকিং সাপ্লাই চেইন—মাঠ থেকে সরাসরি ক্রেতার টেবিলে!</p>
+            </div>
+
+            <!-- Grid Layout for Pitch Elements -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-10 md:mb-16">
+                
+                <!-- Problem Statement -->
+                <div class="glass p-6 md:p-8 rounded-3xl border-slate-700/50 hover:border-red-500/30 transition-all duration-500 group hover:-translate-y-1 hover:shadow-2xl hover:shadow-red-900/10">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-12 h-12 shrink-0 rounded-2xl bg-gradient-to-br from-red-500/20 to-red-600/5 border border-red-500/20 flex items-center justify-center text-red-400 text-xl group-hover:scale-110 transition-transform duration-300">
+                            <i class="fa-solid fa-link-slash"></i>
+                        </div>
+                        <h3 class="text-xl md:text-2xl font-bold text-slate-100">The Problem <span class="text-slate-500 text-lg font-medium">(সমস্যা)</span></h3>
+                    </div>
+                    <ul class="space-y-4 text-sm md:text-base text-slate-300 leading-relaxed">
+                        <li class="flex items-start gap-3"><i class="fa-solid fa-arrow-trend-down text-red-400 mt-1.5 shrink-0 opacity-80"></i> <span><strong>কৃষকের বঞ্চনা:</strong> ৪-৫ ধাপে হাতবদল (Middlemen) হওয়ার কারণে কৃষকরা তাদের উৎপাদিত পণ্যের ন্যায্যমূল্য পান না।</span></li>
+                        <li class="flex items-start gap-3"><i class="fa-solid fa-clock-rotate-left text-red-400 mt-1.5 shrink-0 opacity-80"></i> <span><strong>স্লো সাপ্লাই চেইন:</strong> প্রথাগত লজিস্টিকস খুবই ধীরগতির, ফলে শহরে আসতে আসতে সবজির সতেজতা নষ্ট হয়।</span></li>
+                        <li class="flex items-start gap-3"><i class="fa-solid fa-eye-slash text-red-400 mt-1.5 shrink-0 opacity-80"></i> <span><strong>স্বচ্ছতার অভাব:</strong> ক্রেতারা জানেন না তাদের কেনা দামি সবজিটি কোথা থেকে এসেছে এবং এর গুণগত মান কেমন।</span></li>
+                    </ul>
+                </div>
+
+                <!-- Solution -->
+                <div class="glass p-6 md:p-8 rounded-3xl border-trace-500/30 hover:border-trace-400 transition-all duration-500 relative overflow-hidden group hover:-translate-y-1 hover:shadow-2xl hover:shadow-trace-900/20">
+                    <div class="absolute -right-20 -top-20 w-48 h-48 bg-trace-500/10 rounded-full blur-3xl group-hover:bg-trace-500/20 transition-all duration-700"></div>
+                    <div class="flex items-center gap-4 mb-6 relative z-10">
+                        <div class="w-12 h-12 shrink-0 rounded-2xl bg-gradient-to-br from-trace-500/20 to-trace-600/5 border border-trace-500/30 flex items-center justify-center text-trace-400 text-xl group-hover:scale-110 transition-transform duration-300 shadow-[0_0_15px_rgba(59,130,246,0.2)]">
+                            <i class="fa-solid fa-bolt"></i>
+                        </div>
+                        <h3 class="text-xl md:text-2xl font-bold text-slate-100">The Solution <span class="text-slate-500 text-lg font-medium">(সমাধান)</span></h3>
+                    </div>
+                    <ul class="space-y-4 text-sm md:text-base text-slate-300 leading-relaxed relative z-10">
+                        <li class="flex items-start gap-3"><i class="fa-solid fa-truck-fast text-trace-400 mt-1.5 shrink-0 group-hover:text-trace-300 transition-colors"></i> <span><strong>ডিরেক্ট সোর্সিং:</strong> কৃষকের মাঠ থেকে সরাসরি 'Hub-and-Spoke' মডেলে পণ্য সংগ্রহ ও ফাস্ট ডেলিভারি।</span></li>
+                        <li class="flex items-start gap-3"><i class="fa-solid fa-location-crosshairs text-trace-400 mt-1.5 shrink-0 group-hover:text-trace-300 transition-colors"></i> <span><strong>লাইভ জিপিএস:</strong> রাইড শেয়ারিং অ্যাপের মতো মাঠ থেকে আপনার বাসা পর্যন্ত লজিস্টিকসের রিয়ে-টাইম মুভমেন্ট।</span></li>
+                        <li class="flex items-start gap-3"><i class="fa-solid fa-qrcode text-trace-400 mt-1.5 shrink-0 group-hover:text-trace-300 transition-colors"></i> <span><strong>QR স্ক্যান ট্র্যাকিং:</strong> প্যাকেটের কোড স্ক্যান করলেই দেখা যাবে সবজিটি কোন কৃষকের এবং কখন হারভেস্ট করা হয়েছে।</span></li>
+                    </ul>
+                </div>
+            </div>
+
+             <!-- Supply Chain Flow Section -->
+             <div class="mb-10 md:mb-16">
+                <h3 class="text-xl font-bold mb-6 flex items-center gap-3 text-slate-100"><i class="fa-solid fa-route text-trace-400"></i> সাপ্লাই চেইন ফ্লো <span class="text-slate-500 text-base font-normal">(Supply Chain Flow)</span></h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 relative">
+                    <div class="glass p-6 rounded-2xl border border-slate-700/50 text-center relative group hover:border-trace-500/30 hover:bg-slate-800/30 transition-all duration-300">
+                        <div class="w-14 h-14 mx-auto bg-slate-900 rounded-full flex items-center justify-center mb-4 text-trace-400 border border-slate-700 shadow-inner group-hover:scale-110 group-hover:border-trace-500/50 transition-all duration-300 text-xl"><i class="fa-solid fa-tractor"></i></div>
+                        <h4 class="font-bold text-slate-200 mb-2">হারভেস্ট</h4>
+                        <p class="text-xs text-slate-400 leading-relaxed">ফসল তোলার সাথে সাথে সিস্টেমে রিয়েল-টাইম এন্ট্রি।</p>
+                        <i class="fa-solid fa-arrow-right-long absolute top-1/2 -right-4 transform -translate-y-1/2 text-slate-600 hidden lg:block text-lg"></i>
+                        <div class="absolute -bottom-4 left-1/2 transform -translate-x-1/2 text-slate-600 block lg:hidden"><i class="fa-solid fa-arrow-down-long"></i></div>
+                    </div>
+                    <div class="glass p-6 rounded-2xl border border-slate-700/50 text-center relative group hover:border-trace-500/30 hover:bg-slate-800/30 transition-all duration-300">
+                        <div class="w-14 h-14 mx-auto bg-slate-900 rounded-full flex items-center justify-center mb-4 text-trace-400 border border-slate-700 shadow-inner group-hover:scale-110 group-hover:border-trace-500/50 transition-all duration-300 text-xl"><i class="fa-solid fa-warehouse"></i></div>
+                        <h4 class="font-bold text-slate-200 mb-2">ভিলেজ হাব</h4>
+                        <p class="text-xs text-slate-400 leading-relaxed">কালেকশন সেন্টারে মান যাচাই ও কিউআর প্যাকেজিং।</p>
+                        <i class="fa-solid fa-arrow-right-long absolute top-1/2 -right-4 transform -translate-y-1/2 text-slate-600 hidden lg:block text-lg"></i>
+                        <div class="absolute -bottom-4 left-1/2 transform -translate-x-1/2 text-slate-600 block lg:hidden md:hidden"><i class="fa-solid fa-arrow-down-long"></i></div>
+                    </div>
+                    <div class="glass p-6 rounded-2xl border border-slate-700/50 text-center relative group hover:border-trace-500/30 hover:bg-slate-800/30 transition-all duration-300">
+                        <div class="w-14 h-14 mx-auto bg-slate-900 rounded-full flex items-center justify-center mb-4 text-trace-400 border border-slate-700 shadow-inner group-hover:scale-110 group-hover:border-trace-500/50 transition-all duration-300 text-xl"><i class="fa-solid fa-truck-fast"></i></div>
+                        <h4 class="font-bold text-slate-200 mb-2">সেন্ট্রাল ওয়্যারহাউজ</h4>
+                        <p class="text-xs text-slate-400 leading-relaxed">ট্রাকে শহরে বাল্ক ট্রান্সপোর্ট (Live GPS tracked)।</p>
+                        <i class="fa-solid fa-arrow-right-long absolute top-1/2 -right-4 transform -translate-y-1/2 text-slate-600 hidden lg:block text-lg"></i>
+                        <div class="absolute -bottom-4 left-1/2 transform -translate-x-1/2 text-slate-600 block lg:hidden"><i class="fa-solid fa-arrow-down-long"></i></div>
+                    </div>
+                    <div class="glass p-6 rounded-2xl border border-slate-700/50 text-center group hover:border-trace-500/30 hover:bg-slate-800/30 transition-all duration-300">
+                        <div class="w-14 h-14 mx-auto bg-slate-900 rounded-full flex items-center justify-center mb-4 text-trace-400 border border-slate-700 shadow-inner group-hover:scale-110 group-hover:border-trace-500/50 transition-all duration-300 text-xl"><i class="fa-solid fa-motorcycle"></i></div>
+                        <h4 class="font-bold text-slate-200 mb-2">লাস্ট-মাইল</h4>
+                        <p class="text-xs text-slate-400 leading-relaxed">সকালের মধ্যে অপটিমাইজড রুটে ক্রেতার বাসায় ডেলিভারি।</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Arch & Business Model -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-10 md:mb-16">
+                <!-- Tech Stack -->
+                <div class="glass p-6 md:p-8 rounded-3xl col-span-1 lg:col-span-2 border-slate-700/50 hover:border-trace-500/30 transition-colors">
+                    <h3 class="text-lg md:text-xl font-bold mb-6 flex items-center gap-3"><i class="fa-solid fa-network-wired text-trace-400"></i> Real-time Architecture</h3>
+                    <div class="flex flex-wrap gap-3 md:gap-4">
+                        <span class="px-4 py-2.5 rounded-xl bg-slate-900/80 border border-slate-700/80 text-sm font-medium flex items-center gap-2.5 hover:border-orange-400/50 hover:bg-orange-400/5 transition-all cursor-default shadow-sm"><i class="fa-solid fa-stream text-orange-400 text-lg"></i> Apache Kafka (Event Stream)</span>
+                        <span class="px-4 py-2.5 rounded-xl bg-slate-900/80 border border-slate-700/80 text-sm font-medium flex items-center gap-2.5 hover:border-red-400/50 hover:bg-red-400/5 transition-all cursor-default shadow-sm"><i class="fa-solid fa-database text-red-400 text-lg"></i> Redis (Live GPS)</span>
+                        <span class="px-4 py-2.5 rounded-xl bg-slate-900/80 border border-slate-700/80 text-sm font-medium flex items-center gap-2.5 hover:border-sky-400/50 hover:bg-sky-400/5 transition-all cursor-default shadow-sm"><i class="fa-brands fa-python text-sky-400 text-lg"></i> Python Routing Alg.</span>
+                        <span class="px-4 py-2.5 rounded-xl bg-slate-900/80 border border-slate-700/80 text-sm font-medium flex items-center gap-2.5 hover:border-indigo-400/50 hover:bg-indigo-400/5 transition-all cursor-default shadow-sm"><i class="fa-solid fa-mobile-screen text-indigo-400 text-lg"></i> Flutter App</span>
+                    </div>
+                </div>
+
+                <!-- Business Model -->
+                <div class="glass p-6 md:p-8 rounded-3xl bg-gradient-to-br from-slate-800/60 to-trace-900/30 border border-trace-500/20 hover:border-trace-500/40 transition-colors relative overflow-hidden">
+                    <div class="absolute -right-10 -bottom-10 opacity-10"><i class="fa-solid fa-money-bill-trend-up text-9xl text-trace-500"></i></div>
+                    <h3 class="text-lg md:text-xl font-bold mb-6 flex items-center gap-3 relative z-10"><i class="fa-solid fa-sack-dollar text-trace-400"></i> Business Model</h3>
+                    <ul class="space-y-3 text-sm text-slate-300 relative z-10 font-medium">
+                        <li class="p-3 bg-slate-900/60 rounded-xl border border-slate-700/50 flex justify-between items-center hover:border-trace-500/30 transition-colors"><span>D2C রিটেইল মার্জিন</span> <span class="px-2 py-0.5 rounded bg-trace-500/20 text-trace-400 text-xs font-bold border border-trace-500/30">CORE</span></li>
+                        <li class="p-3 bg-slate-900/60 rounded-xl border border-slate-700/50 flex justify-between items-center hover:border-yellow-500/30 transition-colors"><span>বাস্কেট ডেলিভারি</span> <span class="px-2 py-0.5 rounded bg-yellow-500/20 text-yellow-400 text-xs font-bold border border-yellow-500/30">VOLUME</span></li>
+                        <li class="p-3 bg-slate-900/60 rounded-xl border border-slate-700/50 flex justify-between items-center hover:border-indigo-500/30 transition-colors"><span>সুপারশপ সাপ্লাই</span> <span class="px-2 py-0.5 rounded bg-indigo-500/20 text-indigo-400 text-xs font-bold border border-indigo-500/30">B2B</span></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                 <!-- Market Size -->
+                 <div class="glass p-6 md:p-8 rounded-3xl border border-slate-700/50 hover:bg-slate-800/30 transition-colors group">
+                    <h3 class="text-lg md:text-xl font-bold mb-4 flex items-center gap-3"><i class="fa-solid fa-chart-line text-green-400 group-hover:animate-bounce"></i> Market Potential</h3>
+                    <div class="flex items-end gap-4 mb-5">
+                        <div class="text-4xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-300 tracking-tight">$20B+</div>
+                        <div class="text-xs md:text-sm text-slate-400 leading-tight pb-1">এগ্রি-ফুড মার্কেট <br>বাংলাদেশে</div>
+                    </div>
+                    <div class="w-full bg-slate-900/80 rounded-full h-2.5 mb-2 shadow-inner overflow-hidden border border-slate-700/50">
+                        <div class="bg-gradient-to-r from-green-500 to-emerald-400 h-full rounded-full animate-fill-bar relative" style="width: 85%">
+                            <div class="absolute inset-0 bg-white/20 w-full animate-pulse"></div>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-center text-[10px] md:text-xs font-medium text-slate-500 uppercase tracking-wider">
+                        <span>High Demand</span>
+                        <span>TAM: 100%</span>
+                    </div>
+                </div>
+
+                <!-- Go-To-Market Strategy -->
+                <div class="glass p-6 md:p-8 rounded-3xl border border-slate-700/50 hover:bg-slate-800/30 transition-colors">
+                    <h3 class="text-lg md:text-xl font-bold mb-5 flex items-center gap-3"><i class="fa-solid fa-bullhorn text-orange-400"></i> GTM Strategy</h3>
+                    <ul class="space-y-4 text-sm text-slate-300">
+                        <li class="flex items-start gap-3 group"><i class="fa-regular fa-square-check text-slate-600 mt-1 shrink-0 group-hover:text-orange-400 transition-colors text-base"></i> <span><strong>Target Area:</strong> শুরুতে ঢাকার প্রিমিয়াম জোন (গুলশান, বনানী, ধানমন্ডি)।</span></li>
+                        <li class="flex items-start gap-3 group"><i class="fa-regular fa-square-check text-slate-600 mt-1 shrink-0 group-hover:text-orange-400 transition-colors text-base"></i> <span><strong>Marketing:</strong> "Health conscious" কমিউনিটি এবং কর্পোরেট অফিসে ক্যাম্পেইন।</span></li>
+                        <li class="flex items-start gap-3 group"><i class="fa-regular fa-square-check text-slate-600 mt-1 shrink-0 group-hover:text-orange-400 transition-colors text-base"></i> <span><strong>Logistics:</strong> ডেলিভারির খরচ কমাতে অপটিমাইজড এবং বাল্ক ফ্লিট ম্যানেজমেন্ট।</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============================================== -->
+        <!-- IDEA 3: SmartCity Content (GovTech) -->
+        <!-- ============================================== -->
+        <div id="content-city" class="hidden-content">
+            <!-- Hero Section -->
+            <div class="text-center mb-12 md:mb-20 relative">
+                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-32 bg-city-500/10 blur-[80px] rounded-full pointer-events-none"></div>
+                <span class="inline-flex items-center gap-2 py-1.5 px-4 rounded-full bg-city-500/10 text-city-400 border border-city-500/30 text-xs md:text-sm font-semibold tracking-widest mb-6 uppercase shadow-[0_0_15px_rgba(245,158,11,0.15)]">
+                    <span class="w-1.5 h-1.5 rounded-full bg-city-400 animate-pulse"></span> আইডিয়া ৩ (GovTech)
+                </span>
+                <h2 class="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 leading-[1.1] tracking-tight text-white drop-shadow-sm">
+                    CityPulse <br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-city-400 via-amber-300 to-yellow-200">ইউনিফাইড স্মার্ট সিটি রিপোর্টিং</span>
+                </h2>
+                <p class="text-slate-300/80 max-w-2xl mx-auto text-sm md:text-lg px-2 font-light leading-relaxed">ভাঙা রাস্তা বা উপচে পড়া ময়লা? এক ক্লিকে ছবি তুলে রিপোর্ট করুন। সরাসরি সিটি কর্পোরেশনের হিটম্যাপে রিয়েল-টাইম সমাধান!</p>
+            </div>
+
+            <!-- Grid Layout for Pitch Elements -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-10 md:mb-16">
+                <!-- Problem Statement -->
+                <div class="glass p-6 md:p-8 rounded-3xl border-slate-700/50 hover:border-red-500/30 transition-all duration-500 group hover:-translate-y-1 hover:shadow-2xl hover:shadow-red-900/10">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-12 h-12 shrink-0 rounded-2xl bg-gradient-to-br from-red-500/20 to-red-600/5 border border-red-500/20 flex items-center justify-center text-red-400 text-xl group-hover:scale-110 transition-transform duration-300">
+                            <i class="fa-solid fa-city"></i>
+                        </div>
+                        <h3 class="text-xl md:text-2xl font-bold text-slate-100">The Problem <span class="text-slate-500 text-lg font-medium">(সমস্যা)</span></h3>
+                    </div>
+                    <ul class="space-y-4 text-sm md:text-base text-slate-300 leading-relaxed">
+                        <li class="flex items-start gap-3"><i class="fa-solid fa-xmark text-red-400 mt-1.5 shrink-0 opacity-80"></i> <span><strong>জটিল প্রক্রিয়া:</strong> রাস্তা ভাঙা বা ড্রেনের সমস্যা কোথায়, কাকে রিপোর্ট করতে হবে সাধারণ নাগরিকরা তা জানেন না।</span></li>
+                        <li class="flex items-start gap-3"><i class="fa-solid fa-xmark text-red-400 mt-1.5 shrink-0 opacity-80"></i> <span><strong>ডেটা ব্লাইন্ডস্পট:</strong> সিটি কর্পোরেশনের কাছে সেন্ট্রাল কোনো লাইভ ড্যাশবোর্ড নেই যে শহরের কোন অংশে সমস্যা বেশি।</span></li>
+                        <li class="flex items-start gap-3"><i class="fa-solid fa-xmark text-red-400 mt-1.5 shrink-0 opacity-80"></i> <span><strong>জবাবদিহিতার অভাব:</strong> একবার অভিযোগ করলে সেটির স্ট্যাটাস বা সমাধান হলো কিনা তা ট্র্যাক করার উপায় নেই।</span></li>
+                    </ul>
+                </div>
+
+                <!-- Solution -->
+                <div class="glass p-6 md:p-8 rounded-3xl border-city-500/30 hover:border-city-400 transition-all duration-500 relative overflow-hidden group hover:-translate-y-1 hover:shadow-2xl hover:shadow-city-900/20">
+                    <div class="absolute -right-20 -top-20 w-48 h-48 bg-city-500/10 rounded-full blur-3xl group-hover:bg-city-500/20 transition-all duration-700"></div>
+                    <div class="flex items-center gap-4 mb-6 relative z-10">
+                        <div class="w-12 h-12 shrink-0 rounded-2xl bg-gradient-to-br from-city-500/20 to-city-600/5 border border-city-500/30 flex items-center justify-center text-city-400 text-xl group-hover:scale-110 transition-transform duration-300 shadow-[0_0_15px_rgba(245,158,11,0.2)]">
+                            <i class="fa-solid fa-bullseye"></i>
+                        </div>
+                        <h3 class="text-xl md:text-2xl font-bold text-slate-100">The Solution <span class="text-slate-500 text-lg font-medium">(সমাধান)</span></h3>
+                    </div>
+                    <ul class="space-y-4 text-sm md:text-base text-slate-300 leading-relaxed relative z-10">
+                        <li class="flex items-start gap-3"><i class="fa-solid fa-camera text-city-400 mt-1.5 shrink-0 group-hover:text-city-300 transition-colors"></i> <span><strong>স্ন্যাপ ও সেন্ড:</strong> অ্যাপে ছবি তুললেই এআই (AI) স্বয়ংক্রিয়ভাবে ক্যাটাগরি (ময়লা, রাস্তা) ও জিপিএস ট্র্যাক করে নেবে।</span></li>
+                        <li class="flex items-start gap-3"><i class="fa-solid fa-map-location-dot text-city-400 mt-1.5 shrink-0 group-hover:text-city-300 transition-colors"></i> <span><strong>লাইভ হিটম্যাপ:</strong> মেয়র বা কর্তৃপক্ষের ড্যাশবোর্ডে শহরের একটি লাইভ হিটম্যাপ তৈরি হবে, যা রিসোর্স অ্যালোকেশনে সাহায্য করবে।</span></li>
+                        <li class="flex items-start gap-3"><i class="fa-solid fa-bell text-city-400 mt-1.5 shrink-0 group-hover:text-city-300 transition-colors"></i> <span><strong>স্ট্যাটাস ট্র্যাকিং:</strong> সমস্যাটির কাজ কতদূর আগালো বা সমাধান হলো কি না, নাগরিক অ্যাপে লাইভ নোটিফিকেশন পাবেন।</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Tech & Impact -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-10 md:mb-16">
+                <!-- Tech Stack -->
+                <div class="glass p-6 md:p-8 rounded-3xl col-span-1 lg:col-span-2 border-slate-700/50 hover:border-city-500/30 transition-colors">
+                    <h3 class="text-lg md:text-xl font-bold mb-6 flex items-center gap-3"><i class="fa-solid fa-laptop-code text-city-400"></i> Architecture & Flow</h3>
+                    <div class="flex flex-wrap gap-3 md:gap-4 mb-6">
+                        <span class="px-4 py-2.5 rounded-xl bg-slate-900/80 border border-slate-700/80 text-sm font-medium flex items-center gap-2.5 shadow-sm"><i class="fa-brands fa-flutter text-sky-400 text-lg"></i> User App (Flutter)</span>
+                        <span class="px-4 py-2.5 rounded-xl bg-slate-900/80 border border-slate-700/80 text-sm font-medium flex items-center gap-2.5 shadow-sm"><i class="fa-solid fa-brain text-pink-400 text-lg"></i> AI Auto-Categorization</span>
+                        <span class="px-4 py-2.5 rounded-xl bg-slate-900/80 border border-slate-700/80 text-sm font-medium flex items-center gap-2.5 shadow-sm"><i class="fa-solid fa-map text-emerald-400 text-lg"></i> GIS / Web Dashboard</span>
+                    </div>
+                    <div class="flex items-center gap-2 text-sm text-slate-400">
+                        <span class="px-2 py-1 bg-slate-800 rounded">Citizen Reports</span> <i class="fa-solid fa-arrow-right"></i>
+                        <span class="px-2 py-1 bg-slate-800 rounded">AI Sorting</span> <i class="fa-solid fa-arrow-right"></i>
+                        <span class="px-2 py-1 bg-city-500/20 text-city-400 rounded">Govt. Dashboard</span>
+                    </div>
+                </div>
+
+                <!-- Impact -->
+                <div class="glass p-6 md:p-8 rounded-3xl bg-gradient-to-br from-slate-800/60 to-city-900/30 border border-city-500/20">
+                    <h3 class="text-lg md:text-xl font-bold mb-6 flex items-center gap-3"><i class="fa-solid fa-handshake text-city-400"></i> Primary Impact</h3>
+                    <ul class="space-y-4 text-sm text-slate-300">
+                        <li class="flex flex-col gap-1">
+                            <span class="text-city-400 font-bold">LGRD / সিটি কর্পোরেশন:</span> 
+                            <span class="text-xs text-slate-400">রিসোর্স অ্যালোকেশন সহজ হবে এবং কাজের জবাবদিহিতা বাড়বে।</span>
+                        </li>
+                        <li class="flex flex-col gap-1">
+                            <span class="text-sky-400 font-bold">সাধারণ নাগরিক:</span> 
+                            <span class="text-xs text-slate-400">শহরের উন্নয়নে সরাসরি যুক্ত থাকার অনুভূতি (Civic Tech)।</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============================================== -->
+        <!-- IDEA 4: EHR Cloud Content (GovTech) -->
+        <!-- ============================================== -->
+        <div id="content-health" class="hidden-content">
+            <!-- Hero Section -->
+            <div class="text-center mb-12 md:mb-20 relative">
+                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-32 bg-health-500/10 blur-[80px] rounded-full pointer-events-none"></div>
+                <span class="inline-flex items-center gap-2 py-1.5 px-4 rounded-full bg-health-500/10 text-health-400 border border-health-500/30 text-xs md:text-sm font-semibold tracking-widest mb-6 uppercase shadow-[0_0_15px_rgba(239,68,68,0.15)]">
+                    <span class="w-1.5 h-1.5 rounded-full bg-health-400 animate-pulse"></span> আইডিয়া ৪ (GovTech)
+                </span>
+                <h2 class="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 leading-[1.1] tracking-tight text-white drop-shadow-sm">
+                    HealthSync <br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-health-400 via-rose-300 to-pink-200">ন্যাশনাল হেলথ রেকর্ড এক্সচেঞ্জ</span>
+                </h2>
+                <p class="text-slate-300/80 max-w-2xl mx-auto text-sm md:text-lg px-2 font-light leading-relaxed">যুক্তরাজ্যের 'NHS Spine'-এর আদলে বাংলাদেশের নাগরিকদের জন্য এনআইডি (NID)-ভিত্তিক সেন্ট্রাল ক্লাউড হেলথ ডেটাবেস।</p>
+            </div>
+
+            <!-- Grid Layout for Pitch Elements -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-10 md:mb-16">
+                <!-- Problem Statement -->
+                <div class="glass p-6 md:p-8 rounded-3xl border-slate-700/50 hover:border-red-500/30 transition-all duration-500 group hover:-translate-y-1 hover:shadow-2xl hover:shadow-red-900/10">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-12 h-12 shrink-0 rounded-2xl bg-gradient-to-br from-red-500/20 to-red-600/5 border border-red-500/20 flex items-center justify-center text-red-400 text-xl group-hover:scale-110 transition-transform duration-300">
+                            <i class="fa-solid fa-file-medical"></i>
+                        </div>
+                        <h3 class="text-xl md:text-2xl font-bold text-slate-100">The Problem <span class="text-slate-500 text-lg font-medium">(সমস্যা)</span></h3>
+                    </div>
+                    <ul class="space-y-4 text-sm md:text-base text-slate-300 leading-relaxed">
+                        <li class="flex items-start gap-3"><i class="fa-solid fa-xmark text-red-400 mt-1.5 shrink-0 opacity-80"></i> <span><strong>ডেটা ফ্র্যাগমেন্টেশন:</strong> হাসপাতাল পাল্টালেই রোগীর পূর্বের চিকিৎসা বা টেস্ট রিপোর্ট হারিয়ে যায়।</span></li>
+                        <li class="flex items-start gap-3"><i class="fa-solid fa-xmark text-red-400 mt-1.5 shrink-0 opacity-80"></i> <span><strong>ইমার্জেন্সি ঝুঁকি:</strong> দুর্ঘটনার সময় রোগীর ব্লাড গ্রুপ বা ড্রাগ অ্যালার্জি জানার কোনো সেন্ট্রাল সিস্টেম নেই।</span></li>
+                        <li class="flex items-start gap-3"><i class="fa-solid fa-xmark text-red-400 mt-1.5 shrink-0 opacity-80"></i> <span><strong>গবেষণার অভাব:</strong> স্বাস্থ্য মন্ত্রণালয়ের কাছে রিয়েল-টাইম এপিডেমিওলজিক্যাল ডেটা থাকে না।</span></li>
+                    </ul>
+                </div>
+
+                <!-- Solution -->
+                <div class="glass p-6 md:p-8 rounded-3xl border-health-500/30 hover:border-health-400 transition-all duration-500 relative overflow-hidden group hover:-translate-y-1 hover:shadow-2xl hover:shadow-health-900/20">
+                    <div class="absolute -right-20 -top-20 w-48 h-48 bg-health-500/10 rounded-full blur-3xl group-hover:bg-health-500/20 transition-all duration-700"></div>
+                    <div class="flex items-center gap-4 mb-6 relative z-10">
+                        <div class="w-12 h-12 shrink-0 rounded-2xl bg-gradient-to-br from-health-500/20 to-health-600/5 border border-health-500/30 flex items-center justify-center text-health-400 text-xl group-hover:scale-110 transition-transform duration-300 shadow-[0_0_15px_rgba(239,68,68,0.2)]">
+                            <i class="fa-solid fa-cloud-arrow-up"></i>
+                        </div>
+                        <h3 class="text-xl md:text-2xl font-bold text-slate-100">The Solution <span class="text-slate-500 text-lg font-medium">(সমাধান)</span></h3>
+                    </div>
+                    <ul class="space-y-4 text-sm md:text-base text-slate-300 leading-relaxed relative z-10">
+                        <li class="flex items-start gap-3"><i class="fa-solid fa-id-card text-health-400 mt-1.5 shrink-0 group-hover:text-health-300 transition-colors"></i> <span><strong>NID-বেসড রেকর্ড:</strong> এনআইডির বিপরীতে প্রতিটি নাগরিকের একটি ইউনিক ক্লাউড হেলথ প্রোফাইল তৈরি হবে।</span></li>
+                        <li class="flex items-start gap-3"><i class="fa-solid fa-hospital-user text-health-400 mt-1.5 shrink-0 group-hover:text-health-300 transition-colors"></i> <span><strong>সেন্ট্রাল সিঙ্ক:</strong> দেশের যেকোনো ক্লিনিক টেস্ট করালে তা অটোমেটিকভাবে রোগীর প্রোফাইলে সিঙ্ক হয়ে যাবে।</span></li>
+                        <li class="flex items-start gap-3"><i class="fa-solid fa-chart-line text-health-400 mt-1.5 shrink-0 group-hover:text-health-300 transition-colors"></i> <span><strong>ন্যাশনাল ড্যাশবোর্ড:</strong> কোন জেলায় ডেঙ্গু বা অন্য রোগ বাড়ছে, মন্ত্রণালয় তা রিয়েল-টাইমে দেখতে পারবে।</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Tech & Impact -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-10 md:mb-16">
+                <!-- Tech Stack -->
+                <div class="glass p-6 md:p-8 rounded-3xl col-span-1 lg:col-span-2 border-slate-700/50 hover:border-health-500/30 transition-colors">
+                    <h3 class="text-lg md:text-xl font-bold mb-6 flex items-center gap-3"><i class="fa-solid fa-network-wired text-health-400"></i> Infrastructure</h3>
+                    <div class="flex flex-wrap gap-3 md:gap-4 mb-6">
+                        <span class="px-4 py-2.5 rounded-xl bg-slate-900/80 border border-slate-700/80 text-sm font-medium flex items-center gap-2.5 shadow-sm"><i class="fa-solid fa-stream text-orange-400 text-lg"></i> Kafka (High-throughput Stream)</span>
+                        <span class="px-4 py-2.5 rounded-xl bg-slate-900/80 border border-slate-700/80 text-sm font-medium flex items-center gap-2.5 shadow-sm"><i class="fa-solid fa-shield-halved text-emerald-400 text-lg"></i> End-to-End Encryption</span>
+                        <span class="px-4 py-2.5 rounded-xl bg-slate-900/80 border border-slate-700/80 text-sm font-medium flex items-center gap-2.5 shadow-sm"><i class="fa-brands fa-python text-yellow-400 text-lg"></i> Python FastAPI Core</span>
+                    </div>
+                    <p class="text-xs text-slate-400 italic">হাজারো ক্লিনিকের ডেটা নিরবচ্ছিন্নভাবে সেন্ট্রাল সার্ভারে পাঠাতে Kafka-এর মতো ডিস্ট্রিবিউটেড স্ট্রিমিং অপরিহার্য।</p>
+                </div>
+
+                <!-- Impact -->
+                <div class="glass p-6 md:p-8 rounded-3xl bg-gradient-to-br from-slate-800/60 to-health-900/30 border border-health-500/20">
+                    <h3 class="text-lg md:text-xl font-bold mb-6 flex items-center gap-3"><i class="fa-solid fa-microscope text-health-400"></i> Research & Govt Value</h3>
+                    <ul class="space-y-4 text-sm text-slate-300">
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-chart-pie mt-1 text-health-400"></i>
+                            <span class="text-xs text-slate-300">বিশাল এই ডেটাসেট স্বাস্থ্য খাতের এপিডেমিওলজিক্যাল (Epidemiological) গবেষণার জন্য অমূল্য।</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-truck-medical mt-1 text-health-400"></i>
+                            <span class="text-xs text-slate-300">ইমার্জেন্সিতে দ্রুত রোগীর ইতিহাস জেনে জীবন বাঁচানো সম্ভব।</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Scripts for Interaction -->
+    <script>
+        function showIdea(ideaName) {
+            // Get Elements
+            const contents = {
+                'agro': document.getElementById('content-agro'),
+                'trace': document.getElementById('content-trace'),
+                'city': document.getElementById('content-city'),
+                'health': document.getElementById('content-health')
+            };
+            
+            const btns = {
+                'agro': document.getElementById('btn-agro'),
+                'trace': document.getElementById('btn-trace'),
+                'city': document.getElementById('btn-city'),
+                'health': document.getElementById('btn-health')
+            };
+
+            // Scroll to top smoothly if user is deep in the page
+            if (window.scrollY > 100) {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+
+            // Theme configurations for buttons
+            const themes = {
+                'agro': { bg: 'bg-gradient-to-r from-agro-500 to-agro-600', shadow: 'shadow-agro-500/40', iconTheme: 'fa-leaf' },
+                'trace': { bg: 'bg-gradient-to-r from-trace-500 to-trace-600', shadow: 'shadow-trace-500/40', iconTheme: 'fa-truck-fast' },
+                'city': { bg: 'bg-gradient-to-r from-city-500 to-city-600', shadow: 'shadow-city-500/40', iconTheme: 'fa-city' },
+                'health': { bg: 'bg-gradient-to-r from-health-500 to-health-600', shadow: 'shadow-health-500/40', iconTheme: 'fa-heart-pulse' }
+            };
+
+            const baseBtnClasses = "nav-btn flex-none px-3 sm:px-4 py-2 rounded-lg text-xs md:text-sm font-semibold transition-all duration-500 ";
+            
+            // Loop through all ideas
+            Object.keys(contents).forEach(key => {
+                const content = contents[key];
+                const btn = btns[key];
+                const theme = themes[key];
+                const icon = btn.querySelector('i');
+
+                if (key === ideaName) {
+                    // Show active content
+                    content.style.display = 'block';
+                    
+                    // Trigger animation
+                    content.classList.remove('fade-in');
+                    void content.offsetWidth; 
+                    content.classList.add('fade-in');
+
+                    // Set active button styles
+                    btn.setAttribute('aria-selected', 'true');
+                    btn.className = `${baseBtnClasses} ${theme.bg} text-white shadow-lg ${theme.shadow} transform scale-100`;
+                    icon.className = `fa-solid ${theme.iconTheme} mr-1 sm:mr-1.5 opacity-90`;
+                } else {
+                    // Hide inactive content
+                    content.style.display = 'none';
+
+                    // Set inactive button styles
+                    btn.setAttribute('aria-selected', 'false');
+                    btn.className = `${baseBtnClasses} hover:bg-slate-800 text-slate-400 bg-transparent transform scale-95 hover:scale-100`;
+                    icon.className = `fa-solid ${theme.iconTheme} mr-1 sm:mr-1.5 opacity-70`;
+                }
+            });
+        }
+        
+        // Initialize state & subtle header shadow on scroll
+        document.addEventListener("DOMContentLoaded", () => {
+            // Hide all except first one initially
+            document.getElementById('content-trace').style.display = 'none';
+            document.getElementById('content-city').style.display = 'none';
+            document.getElementById('content-health').style.display = 'none';
+            
+            const header = document.querySelector('header');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 20) {
+                    header.classList.add('shadow-indigo-500/10');
+                } else {
+                    header.classList.remove('shadow-indigo-500/10');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
